@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #F6E3C3;
+        }
+        .imagem-animal {
+            width: 100px;
+            height: 100px;
+        }
+        .anuncios {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: solid 1px;
+            padding: 10px;
+        }
+        .card a {
+            text-decoration: none;
+        }
+        .card:hover {
+            width: 9%;
+            height: 9%;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'anuncios_pessoais' %}">Seus anúncios</a>
+    <a href="{% url 'deslogar' %}">Deslogar</a>
+    <h1>Todos os anúncios</h1>
+    <!-- <table>
+        <tr>
+            <th>Foto</th>
+            <th>Título</th>
+            <th>Gênero</th>
+        </tr>
+        {% for elemento in anuncios %}
+        <tr>
+            <td><img class="imagem-animal" src="{{elemento.foto.url}}" alt="Imagem do animal"></td>
+            <td>{{elemento.titulo}}</td>
+            <td>{{elemento.genero}}</td>
+            <td><a href="{% url 'excluir_anuncio' elemento.id %}">Excluir anúncio</a></td>
+            <td><a href="{% url 'editar_anuncio' elemento.id %}">Editar anúncio</a></td>
+            <td><a href="{% url 'pagina_anuncio' elemento.id %}">Página do anúncio</a></td>
+            <td><a href="{% url 'vacina_anuncio' elemento.id %}">Adicionar vacina</a></td>
+        </tr>
+        {% endfor %}
+    </table> -->
+    <section class="anuncios">
+        {% for elemento in anuncios %}
+        <div class="card">
+            <a href="{% url 'pagina_anuncio' elemento.id %}">
+            <img class="imagem-animal" src="{{elemento.foto.url}}" alt="Imagem do animal">
+            <p>{{elemento.titulo}}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </section>
+</body>
+
+</html>

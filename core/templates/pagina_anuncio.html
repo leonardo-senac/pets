@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .conteudo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conteudo">
+        <h1>{{anuncio.titulo}}</h1>
+        <img src="{{anuncio.foto.url}}" alt="Foto do anúncio" height="70px" width="70px">
+        {{anuncio.descricao}}
+        <p>Peso: {{anuncio.peso}}</p>
+        <p>Gênero: {{anuncio.genero}}</p>
+        <p>Data de nascimento: {{anuncio.data_nascimento}}</p>
+        {% for vacina in vacinas %}
+        <p>
+            Vacina: <strong>{{vacina.vacina.nome}}</strong>
+            Data da vacina: <strong>{{vacina.data_vacina}}</strong>
+        </p>
+
+        {% endfor %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .centro{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <table class="centro">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+        <!-- Para cada ELEMENTO em VACINAS -->
+        {% for elemento in vacinas %}
+        <tr>
+            <td>{{elemento.id}}</td>
+            <td>{{elemento.nome}}</td>
+            <td><a href="{% url 'editar_vacina' elemento.id %}">Editar Vacina</a></td>
+            <td><a href="{% url 'excluir_vacina' elemento.id %}">Excluir Vacina</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

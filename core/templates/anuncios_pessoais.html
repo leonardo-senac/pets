@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imagem-animal {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Seus Anúncios</h1>
+    <table>
+        <tr>
+            <th>Foto</th>
+            <th>Título</th>
+            <th>Gênero</th>
+        </tr>
+        {% for elemento in anuncios %}
+        <tr>
+            <td><img class="imagem-animal" src="{{elemento.foto.url}}" alt="Imagem do animal"></td>
+            <td>{{elemento.titulo}}</td>
+            <td>{{elemento.genero}}</td>
+            <td><a href="{% url 'excluir_anuncio' elemento.id %}">Excluir anúncio</a></td>
+            <td><a href="{% url 'editar_anuncio' elemento.id %}">Editar anúncio</a></td>
+            <td><a href="{% url 'pagina_anuncio' elemento.id %}">Página do anúncio</a></td>
+            <td><a href="{% url 'vacina_anuncio' elemento.id %}">Adicionar vacina</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'deslogar' %}">Deslogar</a>
+</body>
+
+</html>
